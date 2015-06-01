@@ -1,0 +1,95 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:gravity="center_horizontal">
+
+    <TextView android:text="@string/my_title" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:id="@+id/txtTitle" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/media_streamer"
+        android:id="@+id/btnStreamer"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/txtTitle"
+        android:layout_alignStart="@+id/txtTitle"
+        android:layout_alignEnd="@+id/txtTitle"
+        android:padding="20dp"
+        android:onClick="selectMediaStreamer"
+        android:clickable="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/super_duo1"
+        android:id="@+id/btnScores"
+        android:layout_marginTop="5dp"
+        android:padding="20dp"
+        android:layout_below="@+id/btnStreamer"
+        android:layout_alignStart="@+id/btnStreamer"
+        android:layout_alignEnd="@+id/btnStreamer"
+        android:onClick="selectScores"
+        android:clickable="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/super_duo2"
+        android:id="@+id/btnLibrary"
+        android:padding="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/btnScores"
+        android:layout_alignEnd="@+id/btnScores"
+        android:layout_below="@+id/btnScores"
+        android:layout_marginTop="5dp"
+        android:onClick="selectLibrary"
+        android:clickable="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ant_terminator"
+        android:id="@+id/btnBuildBIgger"
+        android:layout_marginTop="5dp"
+        android:padding="20dp"
+        android:layout_below="@+id/btnLibrary"
+        android:layout_alignStart="@+id/btnLibrary"
+        android:layout_alignEnd="@+id/btnLibrary"
+        android:onClick="selectBuildItBigger"
+        android:clickable="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/materialize"
+        android:id="@+id/btnReader"
+        android:padding="20dp"
+        android:layout_below="@+id/btnBuildBIgger"
+        android:layout_alignStart="@+id/btnBuildBIgger"
+        android:layout_alignEnd="@+id/btnBuildBIgger"
+        android:layout_marginTop="5dp"
+        android:onClick="selectReader"
+        android:clickable="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/capstone"
+        android:id="@+id/btnCapstone"
+        android:padding="20dp"
+        android:layout_below="@+id/btnReader"
+        android:layout_alignStart="@+id/btnReader"
+        android:layout_alignEnd="@+id/btnReader"
+        android:layout_marginTop="5dp"
+        android:background="@color/primary_dark"
+        android:onClick="selectCapstone"
+        android:clickable="true" />
+
+</RelativeLayout>
