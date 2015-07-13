@@ -37,7 +37,7 @@ public class MovieDetailActivityFragment extends Fragment {
             TextView movieTitle = (TextView) v.findViewById(R.id.movie_title);
             movieTitle.setText(movie.title);
             TextView movieReleaseDate = (TextView) v.findViewById(R.id.release_date);
-            DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+            DateFormat df = DateFormat.getDateInstance();
             movieReleaseDate.setText(df.format(movie.releaseDate));
             TextView movieSynopsis = (TextView) v.findViewById(R.id.synopsis);
             movieSynopsis.setText(movie.synopsis);
