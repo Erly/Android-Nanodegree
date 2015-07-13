@@ -1,6 +1,7 @@
 package com.erlantzoniga.androidnanodegree;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -14,7 +15,8 @@ public class MainActivity extends Activity {
     }
 
     public void selectMediaStreamer(View v) {
-        Toast.makeText(getApplicationContext(), R.string.launch_media_streamer, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), R.string.launch_media_streamer, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, MoviesActivity.class));
     }
 
     public void selectScores(View v) {
