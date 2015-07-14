@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -52,18 +53,16 @@
                 android:layout_gravity="center_horizontal"
                 tools:rating="3.5" />
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/synopsis"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                tools:text="This is an overview example, long enough to have multiple lines." />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/synopsis"
-            android:gravity="center"
-            tools:text="This is an overview example, long enough to have multiple lines."
-            android:layout_below="@+id/movie_poster"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+        </LinearLayout>
 
     </RelativeLayout>
 
