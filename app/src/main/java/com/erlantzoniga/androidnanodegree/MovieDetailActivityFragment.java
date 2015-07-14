@@ -35,9 +35,7 @@ public class MovieDetailActivityFragment extends Fragment {
             MovieBase movie = intent.getExtras().getParcelable("movie");
             ImageView moviePoster = (ImageView) v.findViewById(R.id.movie_poster);
             Picasso.with(getActivity()).load(movie.posterUri).into(moviePoster);
-            //TextView movieTitle = (TextView) v.findViewById(R.id.movie_title);
             ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(movie.title);
-            //movieTitle.setText(movie.title);
             TextView movieReleaseDate = (TextView) v.findViewById(R.id.release_date);
             DateFormat df = DateFormat.getDateInstance();
             movieReleaseDate.setText(df.format(movie.releaseDate));
