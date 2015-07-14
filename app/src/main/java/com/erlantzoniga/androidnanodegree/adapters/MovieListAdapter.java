@@ -54,18 +54,14 @@ public class MovieListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v;
+        ImageView v;
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(mContext);
-            v = inflater.inflate(R.layout.movie_grid_element, null);
+            v = (ImageView) inflater.inflate(R.layout.movie_grid_element, null);
         } else {
-            v = convertView;
+            v = (ImageView) convertView;
         }
-        ImageView posterImageView = (ImageView) v.findViewById(R.id.movie_poster);
-        Picasso.with(mContext).load(movies[position].posterUri).into(posterImageView);
-
-        /*TextView titleTextView = (TextView) v.findViewById(R.id.movie_title);
-        titleTextView.setText(movies[position].title);*/
+        Picasso.with(mContext).load(movies[position].posterUri).into(v);
 
         return v;
     }
