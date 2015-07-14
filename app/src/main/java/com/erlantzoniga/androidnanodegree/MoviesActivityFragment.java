@@ -41,6 +41,9 @@ import java.util.Date;
  */
 public class MoviesActivityFragment extends Fragment {
 
+    private final String MOVIE_LIST_KEY = "movieList";
+    private final String SORT_BY_KEY = "sortBy";
+
     private MovieListAdapter mMovieAdapter;
 
     private String mSortBy = "";
@@ -48,28 +51,20 @@ public class MoviesActivityFragment extends Fragment {
     public MoviesActivityFragment() {
     }
 
-    /*@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (savedInstanceState == null || !savedInstanceState.containsKey("movies")) {
-
-        }
-    }*/
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_movies, container, false);
 
         GridView movieGridView = (GridView) view.findViewById(R.id.movies_grid);
-        if (savedInstanceState == null || !savedInstanceState.containsKey("movies")) {
+        if (savedInstanceState == null || !savedInstanceState.containsKey(MOVIE_LIST_KEY)) {
             mMovieAdapter = new MovieListAdapter(getActivity());
         } else {
-            mMovieAdapter = new MovieListAdapter(getActivity(), (MovieBase[]) savedInstanceState.getParcelableArray("movies"));
+            mMovieAdapter = new MovieListAdapter(getActivity(), (MovieBase[]) savedInstanceState.getParcelableArray(MOVIE_LIST_KEY));
         }
 
-        if (savedInstanceState != null && savedInstanceState.containsKey("sortBy")) {
-            mSortBy = savedInstanceState.getString("sortBy");
+        if (savedInstanceState != null && savedInstanceState.containsKey(SORT_BY_KEY)) {
+            mSortBy = savedInstanceState.getString(SORT_BY_KEY);
         }
 
         movieGridView.setAdapter(mMovieAdapter);
@@ -93,13 +88,15 @@ public class MoviesActivityFragment extends Fragment {
         String sortByPref = sharedPrefs.getString(getString(R.string.pref_movies_sort_by_key), getString(R.string.pref_movies_sort_by_popularity));
 
         if (!mSortBy.equals(sortByPref)) {
+            mSortBy = sortByPref;
             new FetchMoviesTask().execute(sortByPref);
         }
     }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putParcelableArray("movieList", mMovieAdapter.getMovies());
+        savedInstanceState.putParcelableArray(MOVIE_LIST_KEY, mMovieAdapter.getMovies());
+        savedInstanceState.putString(SORT_BY_KEY, mSortBy);
 
         super.onSaveInstanceState(savedInstanceState);
     }
