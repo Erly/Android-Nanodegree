@@ -34,4 +34,5 @@
         <item>vote_average.desc</item>
     </string-array>
     <string name="title_activity_movie_detail">Movie Details</string>
+    <string name="network_unavailable">Couldn\'t fetch the resource because there is no network available.</string>
 </resources>

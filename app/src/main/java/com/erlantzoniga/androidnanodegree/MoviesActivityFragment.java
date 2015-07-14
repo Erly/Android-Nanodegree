@@ -13,9 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.erlantzoniga.androidnanodegree.adapters.MovieListAdapter;
 import com.erlantzoniga.androidnanodegree.model.MovieBase;
+import com.erlantzoniga.androidnanodegree.utilities.Utilities;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -85,8 +87,12 @@ public class MoviesActivityFragment extends Fragment {
         String sortByPref = sharedPrefs.getString(getString(R.string.pref_movies_sort_by_key), getString(R.string.pref_movies_sort_by_popularity));
 
         if (!mSortBy.equals(sortByPref)) {
-            mSortBy = sortByPref;
-            new FetchMoviesTask().execute(sortByPref);
+            if (Utilities.isNetworkAvailable(getActivity())) {
+                mSortBy = sortByPref;
+                new FetchMoviesTask().execute(sortByPref);
+            } else {
+                Toast.makeText(getActivity(), R.string.network_unavailable, Toast.LENGTH_LONG).show();
+            }
         }
     }
 
