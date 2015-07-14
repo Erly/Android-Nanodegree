@@ -1,8 +1,8 @@
 package com.erlantzoniga.androidnanodegree;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +15,6 @@ import com.erlantzoniga.androidnanodegree.model.MovieBase;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 /**
  * A placeholder fragment containing a simple view.
