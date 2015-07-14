@@ -23,9 +23,18 @@ public class MovieListAdapter extends BaseAdapter {
         mContext = c;
     }
 
+    public MovieListAdapter(Context c, MovieBase[] m) {
+        mContext = c;
+        movies = m;
+    }
+
     public void setMovies(MovieBase[] movies) {
         this.movies = movies;
         notifyDataSetChanged();
+    }
+
+    public MovieBase[] getMovies() {
+        return movies;
     }
 
     @Override

@@ -43,8 +43,18 @@ public class MoviesActivityFragment extends Fragment {
 
     private MovieListAdapter mMovieAdapter;
 
+    private String mSortBy = "";
+
     public MoviesActivityFragment() {
     }
+
+    /*@Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState == null || !savedInstanceState.containsKey("movies")) {
+
+        }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,7 +62,16 @@ public class MoviesActivityFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_movies, container, false);
 
         GridView movieGridView = (GridView) view.findViewById(R.id.movies_grid);
-        mMovieAdapter = new MovieListAdapter(getActivity());
+        if (savedInstanceState == null || !savedInstanceState.containsKey("movies")) {
+            mMovieAdapter = new MovieListAdapter(getActivity());
+        } else {
+            mMovieAdapter = new MovieListAdapter(getActivity(), (MovieBase[]) savedInstanceState.getParcelableArray("movies"));
+        }
+
+        if (savedInstanceState != null && savedInstanceState.containsKey("sortBy")) {
+            mSortBy = savedInstanceState.getString("sortBy");
+        }
+
         movieGridView.setAdapter(mMovieAdapter);
         movieGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -72,7 +91,17 @@ public class MoviesActivityFragment extends Fragment {
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String sortByPref = sharedPrefs.getString(getString(R.string.pref_movies_sort_by_key), getString(R.string.pref_movies_sort_by_popularity));
-        new FetchMoviesTask().execute(sortByPref);
+
+        if (!mSortBy.equals(sortByPref)) {
+            new FetchMoviesTask().execute(sortByPref);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putParcelableArray("movieList", mMovieAdapter.getMovies());
+
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     public class FetchMoviesTask extends AsyncTask<String, Void, MovieBase[]> {
